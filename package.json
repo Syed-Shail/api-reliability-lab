@@ -1,0 +1,12 @@
+{
+  "name": "api-reliability-lab",
+  "version": "1.0.0",
+  "description": "Measure how timeouts, retries with jittered backoff, retry budgets and circuit breakers change success rate, tail latency and upstream load under injected faults.",
+  "type": "module",
+  "license": "MIT",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "test": "node --test test/",
+    "bench": "node bench/run.js"
+  }
+}

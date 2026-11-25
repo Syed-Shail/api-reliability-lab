@@ -1,0 +1,157 @@
+{
+  "node": "v26.11.0",
+  "seconds_per_run": 8,
+  "requests_per_second": 80,
+  "scenarios": {
+    "transient_errors": {
+      "description": "20% of requests fail with 503",
+      "strategies": {
+        "no_protection": {
+          "requests": 640,
+          "success_rate": 0.7969,
+          "p50_ms": 8.6,
+          "p99_ms": 11.5,
+          "max_ms": 17.2,
+          "upstream_calls_per_request": 1,
+          "fast_failures_from_open_circuit": 0
+        },
+        "timeout_only": {
+          "requests": 640,
+          "success_rate": 0.7969,
+          "p50_ms": 8.4,
+          "p99_ms": 11,
+          "max_ms": 15,
+          "upstream_calls_per_request": 1,
+          "fast_failures_from_open_circuit": 0
+        },
+        "naive_retries": {
+          "requests": 640,
+          "success_rate": 1,
+          "p50_ms": 8.9,
+          "p99_ms": 28.1,
+          "max_ms": 33.4,
+          "upstream_calls_per_request": 1.26,
+          "fast_failures_from_open_circuit": 0
+        },
+        "backoff_jitter": {
+          "requests": 640,
+          "success_rate": 1,
+          "p50_ms": 8.6,
+          "p99_ms": 150.1,
+          "max_ms": 252.7,
+          "upstream_calls_per_request": 1.26,
+          "fast_failures_from_open_circuit": 0
+        },
+        "full_resilience": {
+          "requests": 640,
+          "success_rate": 0.9031,
+          "p50_ms": 8.4,
+          "p99_ms": 134.9,
+          "max_ms": 214.4,
+          "upstream_calls_per_request": 1.15,
+          "fast_failures_from_open_circuit": 35
+        }
+      }
+    },
+    "latency_spikes": {
+      "description": "5% of requests take 2 extra seconds",
+      "strategies": {
+        "no_protection": {
+          "requests": 640,
+          "success_rate": 1,
+          "p50_ms": 8.3,
+          "p99_ms": 2009.3,
+          "max_ms": 2011.1,
+          "upstream_calls_per_request": 1,
+          "fast_failures_from_open_circuit": 0
+        },
+        "timeout_only": {
+          "requests": 640,
+          "success_rate": 0.9641,
+          "p50_ms": 8.4,
+          "p99_ms": 251.1,
+          "max_ms": 254.3,
+          "upstream_calls_per_request": 1,
+          "fast_failures_from_open_circuit": 0
+        },
+        "naive_retries": {
+          "requests": 640,
+          "success_rate": 1,
+          "p50_ms": 8.3,
+          "p99_ms": 259.7,
+          "max_ms": 510.8,
+          "upstream_calls_per_request": 1.04,
+          "fast_failures_from_open_circuit": 0
+        },
+        "backoff_jitter": {
+          "requests": 640,
+          "success_rate": 1,
+          "p50_ms": 8.4,
+          "p99_ms": 292.9,
+          "max_ms": 573,
+          "upstream_calls_per_request": 1.04,
+          "fast_failures_from_open_circuit": 0
+        },
+        "full_resilience": {
+          "requests": 640,
+          "success_rate": 1,
+          "p50_ms": 8.4,
+          "p99_ms": 295.1,
+          "max_ms": 575.6,
+          "upstream_calls_per_request": 1.04,
+          "fast_failures_from_open_circuit": 0
+        }
+      }
+    },
+    "outage": {
+      "description": "upstream fully down for the middle 40% of the run, 2% errors otherwise",
+      "strategies": {
+        "no_protection": {
+          "requests": 640,
+          "success_rate": 0.5922,
+          "p50_ms": 8.3,
+          "p99_ms": 10.7,
+          "max_ms": 12.6,
+          "upstream_calls_per_request": 1,
+          "fast_failures_from_open_circuit": 0
+        },
+        "timeout_only": {
+          "requests": 640,
+          "success_rate": 0.5922,
+          "p50_ms": 8.3,
+          "p99_ms": 10.9,
+          "max_ms": 14.3,
+          "upstream_calls_per_request": 1,
+          "fast_failures_from_open_circuit": 0
+        },
+        "naive_retries": {
+          "requests": 640,
+          "success_rate": 0.6016,
+          "p50_ms": 10.4,
+          "p99_ms": 37.2,
+          "max_ms": 40.2,
+          "upstream_calls_per_request": 2.21,
+          "fast_failures_from_open_circuit": 0
+        },
+        "backoff_jitter": {
+          "requests": 640,
+          "success_rate": 0.6219,
+          "p50_ms": 10.2,
+          "p99_ms": 330.2,
+          "max_ms": 357.6,
+          "upstream_calls_per_request": 2.2,
+          "fast_failures_from_open_circuit": 0
+        },
+        "full_resilience": {
+          "requests": 640,
+          "success_rate": 0.4844,
+          "p50_ms": 0.2,
+          "p99_ms": 44.1,
+          "max_ms": 174.6,
+          "upstream_calls_per_request": 0.51,
+          "fast_failures_from_open_circuit": 330
+        }
+      }
+    }
+  }
+}
